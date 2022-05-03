@@ -35,7 +35,7 @@ public class RegisterDevice extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-
+		String error = "Enter unique Device ID!!";
 		PrintWriter out = response.getWriter();
 		RegDeviceDao rd = new RegDeviceDao();
 
@@ -54,8 +54,12 @@ public class RegisterDevice extends HttpServlet {
 				RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 				dispatcher.forward(request, response);
 
-			} else
-				out.println("Device not Registered!");
+			} else {
+				request.setAttribute("error", error);
+				String url = "error.jsp?send=ReadData?username=" + loginId;
+				RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+				dispatcher.forward(request, response);
+			}
 
 		} else
 			out.println("Empty field not allowed.");

@@ -52,7 +52,7 @@ public class Login extends HttpServlet {
 					url = "ReadData";
 				} else {
 					request.setAttribute("error", error);
-					url = "/error.jsp";
+					url = "/error.jsp?send=index.jsp";
 				}
 				RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 				dispatcher.forward(request, response);

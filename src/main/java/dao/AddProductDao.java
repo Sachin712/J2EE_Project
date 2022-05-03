@@ -32,7 +32,7 @@ public class AddProductDao {
 
 	public int updateProduct(int deviceId, String deviceName, String model, Double price, String description)
 			throws SQLException {
-		String sql = "UPDATE `j2ee_project`.`available_devices`SET`deviceName` =?,`model` = ?,`price` = ?,`description` =? WHERE `deviceId` = ?";
+		String sql = "UPDATE heroku_b89caede66a73b0.available_devices SET`deviceName` =?,`model` = ?,`price` = ?,`description` =? WHERE `deviceId` = ?";
 		PreparedStatement st = conn.prepareStatement(sql);
 		st.setString(1, deviceName);
 		st.setString(2, model);

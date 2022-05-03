@@ -52,7 +52,7 @@ public class UpdateProduct extends HttpServlet {
 				if (apd.updateProduct(deviceId, deviceName, model, price, description) == 1) {
 					out.println("Product inserted!");
 
-					String url = "ReadAddProduct";
+					String url = "ReadAddProduct?action=update";
 
 					RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 					dispatcher.forward(request, response);

@@ -30,10 +30,18 @@ public class ReadSignupQuery {
 
 	public String getHTMLTable() throws SQLException {
 		String table = "";
+		table += "<html><head>"
+				+ "<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js'></script>"
+				+ "<script>" + "$(document).ready(function(){" + "  $('#myInput').on('keyup', function() {"
+				+ "    var value = $(this).val().toLowerCase();" + "    $('#myTable tr').filter(function() {"
+				+ "      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)" + "    });" + "  });" + "});"
+				+ "</script></head><body>";
+		table += "<form class='form-inline my-2 my-lg-0'>"
+				+ "<input id='myInput' type='text' placeholder='Search..' class='form-control mx-2' aria-label='Search'></form>";
 		table += "<table class='table'>";
 		table += "<thead class = 'table-dark'><tr><th>ID</th><th>Fullname</th><th>Username</th><th>Password</th><th>Phone Number</th><th>Email</th><th>Address</th></tr></thead>";
-		table+="<tbody>";
-		
+		table += "<tbody id='myTable'>";
+
 		while (this.rs.next()) {
 			int id = this.rs.getInt("uid");
 			String fullname = this.rs.getString("fullname");
